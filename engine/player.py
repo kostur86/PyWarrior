@@ -12,6 +12,10 @@ class Player(object):
 
         self.image = pygame.transform.scale(self.image, (32, 32))
 
+    def on_loop(self, dt):
+        """
+        """
+
     def on_render(self, bf):
         """
         """

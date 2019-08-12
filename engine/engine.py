@@ -35,7 +35,10 @@ class Engine(object):
                 self.quit()
 
     def on_loop(self):
-        pass
+        dt = pygame.time.get_ticks()
+
+        for obj in self._objects:
+            obj.on_loop(dt)
 
     def on_render(self):
         self._display_surf.fill((0, 0, 0))
