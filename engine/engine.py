@@ -2,15 +2,21 @@ import pygame
 from pygame.locals import *
 
 
-class Engine:
+class Engine(object):
     def __init__(self):
         self._running = True
         self._display_surf = None
         self.size = self.weight, self.height = 640, 400
 
+        # Game objects
+        self._objects = []
+
     def quit(self):
         self._running = False
         pygame.quit()
+
+    def add_object(self, obj):
+        self._objects.append(obj)
 
     def on_init(self):
         pygame.init()
@@ -32,7 +38,12 @@ class Engine:
         pass
 
     def on_render(self):
-        pass
+        self._display_surf.fill((0, 0, 0))
+
+        for obj in self._objects:
+            obj.on_render(self._display_surf)
+
+        pygame.display.update()
 
     def on_cleanup(self):
         pygame.quit()
@@ -47,3 +58,6 @@ class Engine:
             self.on_loop()
             self.on_render()
         self.on_cleanup()
+
+    def get_buffer(self):
+        return self._display_surf
