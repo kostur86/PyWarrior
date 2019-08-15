@@ -2,7 +2,7 @@ from engine.engine import Engine
 from engine.player import Player
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     eng = Engine()
 
     # Player object
