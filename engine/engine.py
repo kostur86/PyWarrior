@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 
+TILE_SIZE = 32
 
 class Engine(object):
     def __init__(self):
@@ -10,10 +11,19 @@ class Engine(object):
 
         # Game objects
         self._objects = []
+        self._player = None
 
     def quit(self):
         self._running = False
         pygame.quit()
+        self._display_surf = None
+
+    def add_player(self, obj):
+        self._player = obj
+        self.add_object(obj)
+
+    def get_player(self):
+        return self._player
 
     def add_object(self, obj):
         self._objects.append(obj)
@@ -41,6 +51,9 @@ class Engine(object):
             obj.on_loop(dt)
 
     def on_render(self):
+        if not self._display_surf:
+            return
+
         self._display_surf.fill((0, 0, 0))
 
         for obj in self._objects:
