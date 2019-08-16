@@ -13,7 +13,8 @@ class Object(object):
         self.image_path = os.path.join("assets", image)
         self.image = pygame.image.load(self.image_path)
 
-        self.image = pygame.transform.scale(self.image, (32, 32))
+        self.image = pygame.transform.scale(self.image,
+                                            (TILE_SIZE, TILE_SIZE))
 
         self.position = (0, 0)
 
@@ -31,6 +32,7 @@ class Object(object):
     def on_loop(self, dt):
         """
         """
+
 
 class Tree(Object):
     """

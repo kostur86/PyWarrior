@@ -44,6 +44,15 @@ class Engine(object):
             if event.key == pygame.K_ESCAPE:
                 self.quit()
 
+            elif event.key == pygame.K_UP:
+                self._player.move_up()
+            elif event.key == pygame.K_DOWN:
+                self._player.move_down()
+            elif event.key == pygame.K_LEFT:
+                self._player.move_left()
+            elif event.key == pygame.K_RIGHT:
+                self._player.move_right()
+
     def on_loop(self):
         dt = pygame.time.get_ticks()
 
